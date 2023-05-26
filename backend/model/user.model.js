@@ -8,8 +8,8 @@ const userSchema = new Schema({
   role: String // 'dealer' or 'user'
 });
 
-const User = mongoose.model("user", userSchema);
+const userModel = mongoose.model("user", userSchema);
 
 module.exports = {
-    User
+    userModel
 };

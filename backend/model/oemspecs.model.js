@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const oemSpecsSchema = new Schema({
+const oemSpecsSchema = new mongoose.Schema({
   model: String,
   year: Number,
   listPrice: Number,
@@ -11,8 +11,8 @@ const oemSpecsSchema = new Schema({
   maxSpeed: Number
 });
 
-const OEMSpecs = mongoose.model("oemspecs", oemSpecsSchema);
+const OEMSpecsModel = mongoose.model("OEMSpecs", oemSpecsSchema);
 
 module.exports = {
-    OEMSpecs
+    OEMSpecsModel
 };

@@ -1,19 +1,18 @@
-const mongoose = require("mongoose");
-const { Schema } = mongoose;
+const mongoose = require('mongoose');
 
-const marketplaceInventorySchema = new Schema({
-  model: String,
-  year: Number,
-  kmOnOdometer: Number,
-  majorScratches: Boolean,
-  originalPaint: Boolean,
-  accidentsReported: Number,
-  previousBuyers: Number,
-  registrationPlace: String
+const marketplaceInventorySchema = new mongoose.Schema({
+  dealer: { type: mongoose.Schema.Types.ObjectId, ref: 'Dealer', required: true },
+  oemSpec: { type: mongoose.Schema.Types.ObjectId, ref: 'OemSpec', required: true },
+  odometer: { type: Number },
+  majorScratches: { type: String },
+  originalPaint: { type: Boolean },
+  accidentsReported: { type: Number },
+  previousBuyers: { type: Number },
+  registrationPlace: { type: String }
 });
 
-const MarketplaceInventory = mongoose.model('marketplaceInventory', marketplaceInventorySchema);
+const MarketplaceInventoryModel = mongoose.model('MarketplaceInventory', marketplaceInventorySchema);
 
 module.exports = {
-    MarketplaceInventory
+    MarketplaceInventoryModel
 };
