@@ -1,14 +1,40 @@
 import React, { useState } from 'react';
 import "../styles/Signup.css"
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { signUpUser } from '../Redux/authentication/action';
+import { Button, useToast } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
+
 
 export const Signup = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+  const dispatch = useDispatch();
+  const navigate= useNavigate();
+  const toast= useToast();
+
+  const handleNavigate=()=>{
+    navigate("/login")
+  }
+  const handleToast=(title, status)=>{
+    toast({
+      title: `${title}`,
+      status: `${status}`,
+      isClosable: true,
+      position:"top"
+    })
+  }
 
   const handleSignUp = () => {
-
-    console.log('Signup', { username, password, email });
+    let obj={
+      username:username,
+      password:password,
+      email:email
+    }
+    dispatch(signUpUser(obj, handleNavigate, handleToast));
+    
   };
 
   return (
@@ -33,9 +59,9 @@ export const Signup = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <button type="button" onClick={handleSignUp}>
+        <Button type="button" onClick={handleSignUp}>
           Sign up
-        </button>
+        </Button>
 
       </div>
     </div>

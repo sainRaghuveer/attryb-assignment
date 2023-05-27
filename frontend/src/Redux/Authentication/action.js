@@ -35,12 +35,41 @@ export const loginFailureAction = () => {
 }
 
 
-export const signUp=()=>{
+export const signUpUser = (obj, handleNavigate, handleToast) => (dispatch) => {
+    dispatch(signupRequestAction());
+    return axios.post(`http://localhost:8800/api/user/signup`, obj).then((res) => {
+        console.log(res);
+        if (res.data.status == true) {
+            dispatch(signupSuccessAction());
+            handleToast("User signup successfully!", "success");
+            handleNavigate();
+        } else {
+            handleToast(`${res.data.msg}`, "error");
+        }
+
+    }).catch((error) => {
+        dispatch(signupFailureAction());
+        handleToast("Something went wrong", "error");
+    })
 
 }
 
-export const login=()=>{
-    
+export const login = (obj, handleNavigate, handleToast) => (dispatch) => {
+    dispatch(loginRequestAction());
+    return axios.post(`http://localhost:8800/api/user/login`, obj).then((res) => {
+        console.log(res);
+        if (res.data.status == true) {
+            dispatch(loginSuccessAction(res.data.token));
+            handleToast("User Login successfully!", "success");
+            handleNavigate();
+        } else {
+            handleToast(`${res.data.msg}`, "error");
+        }
+
+    }).catch((error) => {
+        dispatch(loginFailureAction());
+        handleToast("Something went wrong, username or password is incorrect", "error");
+    })
 }
 
 

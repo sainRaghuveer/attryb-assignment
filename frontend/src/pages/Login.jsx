@@ -1,12 +1,36 @@
 import React, { useState } from 'react';
 import "../styles/Login.css"
+import { login } from '../Redux/authentication/action';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { Button, Input, useToast } from '@chakra-ui/react';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const dispatch = useDispatch();
+  const navigate= useNavigate();
+  const toast= useToast();
+
+  const handleNavigate=()=>{
+    navigate("/home")
+  }
+  const handleToast=(title, status)=>{
+    toast({
+      title: `${title}`,
+      status: `${status}`,
+      isClosable: true,
+      position:"top"
+    })
+  }
+
   const handleLogin = () => {
-    console.log('Login', { username, password });
+    let obj={
+      email:email,
+      password:password,
+    }
+    dispatch(login(obj, handleNavigate, handleToast));
   };
 
   return (
@@ -15,9 +39,9 @@ const Login = () => {
         <h2>Login</h2>
           <input
             type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type="password"
@@ -25,9 +49,9 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button type="button" onClick={handleLogin}>
+          <Button type="button" onClick={handleLogin}>
             Log in
-          </button>
+          </Button>
       </div>
     </div >
   );

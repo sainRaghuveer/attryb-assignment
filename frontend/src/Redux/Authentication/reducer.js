@@ -2,7 +2,6 @@ import { USER_LOGIN_FAILURE, USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_SIGNUP
 
 const initialState = {
     isAuth: false,
-    user: {},
     isLoading: false,
     isError: false,
 }
@@ -14,7 +13,7 @@ export const reducer = (state = initialState, { type, payload }) => {
             return { ...state, isLoading: true }
         }
         case USER_SIGNUP_SUCCESS: {
-            return { ...state, isLoading: false, isAuth: true, user: payload }
+            return { ...state, isLoading: false, user: payload }
         }
         case USER_SIGNUP_FAILURE: {
             return { ...state, isLoading: false, isAuth: false, isError: true }
@@ -23,9 +22,11 @@ export const reducer = (state = initialState, { type, payload }) => {
             return { ...state, isLoading: true }
         }
         case USER_LOGIN_SUCCESS: {
-            return { ...state, isLoading: false, isAuth: true, user: payload }
+            sessionStorage.setItem("token",payload)
+            return { ...state, isLoading: false, isAuth: true }
         }
         case USER_LOGIN_FAILURE: {
+            sessionStorage.clear();
             return { ...state, isLoading: false, isAuth: false, isError: true }
         }
         default: {
