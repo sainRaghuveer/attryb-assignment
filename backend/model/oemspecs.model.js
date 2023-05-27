@@ -8,7 +8,7 @@ const oemSpecsSchema = new mongoose.Schema({
   mileage: Number,
   power: Number,
   maxSpeed: Number
-});
+},{timestamps:true});
 
 const OEMSpecsModel = mongoose.model("OEMSpecs", oemSpecsSchema);
 

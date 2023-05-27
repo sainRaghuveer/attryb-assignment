@@ -5,20 +5,32 @@ const carController = require('../controllers/cars.controller');
 
 // Car routes
 
- // Get all cars
-carRouter.get('/cars', carController.getAllCars);
 
+
+
+
+//OEMSpecs routes
 //post data in oemSpecs
 carRouter.post('/cars/oemspecs', carController.addOemCar);
 
+//get data from oemSpecs
+carRouter.get('/cars/getoemspecs', carController.findOemCar);
+
+
+
+
+//MarketInventory routes
+// Get all cars
+carRouter.get('/cars/getdata', carController.getAllCars);
+
 // Add a new car
-carRouter.post('/cars', carController.addCar); 
+carRouter.post('/cars/addcar', carController.addCar);
 
 // Edit a car by ID
-carRouter.put('/cars/:id', carController.editCar);
+carRouter.patch('/cars/edit/:id', carController.editCar);
 
 // Delete a car by ID
-carRouter.delete('/cars/:id', carController.deleteCar); 
+carRouter.delete('/cars/delete/:id', carController.deleteCar);
 
 module.exports = {
     carRouter

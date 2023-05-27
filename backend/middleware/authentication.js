@@ -9,6 +9,7 @@ const authenticate=(req,res,next)=>{
         jwt.verify(token, process.env.secret, function(err, decoded) {
             console.log(decoded) 
             if(decoded){
+                req.headers.userId = decoded.userExist;
                 next();
             }else{
                 res.send({"msg":"Please login first"})

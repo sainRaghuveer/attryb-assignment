@@ -6,7 +6,7 @@ const userSchema = new Schema({
   password: String,
   email: String,
   role: String // 'dealer' or 'user'
-});
+},{timestamps:true});
 
 const userModel = mongoose.model("user", userSchema);
 
