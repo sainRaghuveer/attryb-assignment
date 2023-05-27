@@ -6,11 +6,13 @@ const { authenticate } = require("./middleware/authentication");
 const { userRouter } = require("./routes/user.route");
 require('dotenv').config();
 
-
+//created app using express
 const app=express();
 
+//parser
 app.use(express.json());
 
+//cross-origin-resource-sharing
 app.use(cors());
 
 //It is default route
@@ -27,8 +29,11 @@ app.use(authenticate);
 //car route
 app.use("/api", carRouter);
 
+//port
 const PORT = process.env.port || 8080
 
+
+//server
 app.listen(PORT , async()=>{
     try{
         await connection;

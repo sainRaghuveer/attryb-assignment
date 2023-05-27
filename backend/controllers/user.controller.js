@@ -1,6 +1,8 @@
 // Import the User model
 const {userModel} = require('../model/user.model');
+const jwt = require("jsonwebtoken");
 require('dotenv').config();
+const bcrypt = require('bcrypt');
 
 // User signup
 exports.signup = async (req, res) => {
