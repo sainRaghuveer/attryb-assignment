@@ -163,7 +163,7 @@ exports.editCar = async (req, res) => {
       const updatedCar = await MarketplaceInventoryModel.findByIdAndUpdate(carId, data);
       res.status(200).json({ "msg": "data updated successful", "data": updatedCar });
     } else {
-      res.status(400).json({ "msg": "You are not authorized to edit this product"});
+      res.status(400).json({ "msg": "You are not authorized to edit this product" });
     }
 
   } catch (error) {
@@ -185,7 +185,7 @@ exports.deleteCar = async (req, res) => {
       const deletedCar = await MarketplaceInventoryModel.findByIdAndDelete(carId);
       res.status(200).json({ "msg": "data deleted successful", "data": deletedCar });
     } else {
-      res.status(400).json({ "msg": "You are not authorized to edit this product"});
+      res.status(400).json({ "msg": "You are not authorized to edit this product" });
     }
 
   } catch (error) {
