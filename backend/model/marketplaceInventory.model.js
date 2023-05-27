@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const marketplaceInventorySchema = new mongoose.Schema({
-  dealer: { type: mongoose.Schema.Types.ObjectId, ref: 'Dealer', required: true },
-  oemSpec: { type: mongoose.Schema.Types.ObjectId, ref: 'OemSpec', required: true },
+  dealer:{type: mongoose.Schema.Types.ObjectId, ref: 'user', required: true },
+  oemSpec: { type: mongoose.Schema.Types.ObjectId, ref: 'OEMSpecs', required: true },
   odometer: { type: Number },
   majorScratches: { type: String },
   originalPaint: { type: Boolean },

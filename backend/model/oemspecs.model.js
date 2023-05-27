@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { Schema } = mongoose;
 
 const oemSpecsSchema = new mongoose.Schema({
   model: String,

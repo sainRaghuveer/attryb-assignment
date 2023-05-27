@@ -11,7 +11,6 @@ carRouter.get('/cars', carController.getAllCars);
 //post data in oemSpecs
 carRouter.post('/cars/oemspecs', carController.addOemCar);
 
-
 // Add a new car
 carRouter.post('/cars', carController.addCar); 
 

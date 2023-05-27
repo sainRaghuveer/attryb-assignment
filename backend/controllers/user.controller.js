@@ -1,5 +1,5 @@
 // Import the User model
-const User = require('../models/User');
+const {userModel} = require('../model/user.model');
 
 // User signup
 exports.signup = async (req, res) => {
