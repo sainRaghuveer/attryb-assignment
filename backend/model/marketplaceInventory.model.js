@@ -8,7 +8,8 @@ const marketplaceInventorySchema = new mongoose.Schema({
   originalPaint: { type: Boolean },
   accidentsReported: { type: Number },
   previousBuyers: { type: Number },
-  registrationPlace: { type: String }
+  registrationPlace: { type: String },
+  image:{type: String}
 });
 
 const MarketplaceInventoryModel = mongoose.model('MarketplaceInventory', marketplaceInventorySchema);

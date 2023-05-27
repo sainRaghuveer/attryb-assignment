@@ -35,7 +35,7 @@ exports.login = async (req, res) => {
         if(userExist){
             bcrypt.compare(password, userExist.password, async(err, result)=> {
                 if(result){
-                    var token = jwt.sign({userExist: userExist._id}, 'hospital', { expiresIn: "3h" });
+                    var token = jwt.sign({userExist: userExist._id}, 'attryb', { expiresIn: "3h" });
                     res.send({"msg":"user logged in successful", "token":token, "status":true})
 
                 }else{
