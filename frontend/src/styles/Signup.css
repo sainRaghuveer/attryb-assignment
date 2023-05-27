@@ -1,8 +1,12 @@
 .auth-container {
+  width: 40%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px;
+    margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 40px;
+    margin-top: 100px;
   }
   
   h2 {
@@ -15,8 +19,9 @@
   }
   
   input {
+    width: 80%;
     margin-bottom: 10px;
-    padding: 5px;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
   }
@@ -32,10 +37,13 @@
   
   @media (max-width: 600px) {
     .auth-container {
-      margin: 10px;
+      width: 70%;
+      margin: auto;
+      margin-top: 50px;
     }
-    
-    input, button {
+  
+    input,
+    button {
       width: 100%;
     }
   }

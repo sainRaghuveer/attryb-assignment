@@ -1,5 +1,6 @@
 // Import the User model
 const {userModel} = require('../model/user.model');
+require('dotenv').config();
 
 // User signup
 exports.signup = async (req, res) => {
@@ -35,7 +36,7 @@ exports.login = async (req, res) => {
         if(userExist){
             bcrypt.compare(password, userExist.password, async(err, result)=> {
                 if(result){
-                    var token = jwt.sign({userExist: userExist._id}, 'attryb', { expiresIn: "3h" });
+                    var token = jwt.sign({userExist: userExist._id}, process.env.secret, { expiresIn: "3h" });
                     res.send({"msg":"user logged in successful", "token":token, "status":true})
 
                 }else{

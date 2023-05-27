@@ -12,9 +12,9 @@ export const Signup = () => {
   };
 
   return (
-    <div className="auth-container">
-      <h2>SignUp</h2>
-      <form>
+    <div style={{ width: "100%" }}>
+      <div className="auth-container">
+        <h1>SignUp</h1>
         <input
           type="text"
           placeholder="Username"
@@ -36,7 +36,8 @@ export const Signup = () => {
         <button type="button" onClick={handleSignUp}>
           Sign up
         </button>
-      </form>
+
+      </div>
     </div>
   );
 };

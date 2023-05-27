@@ -3,6 +3,7 @@ const cors = require("cors");
 const { connection } = require("./configs/db");
 const { carRouter } = require("./routes/cars.route");
 const { authenticate } = require("./middleware/authentication");
+const { userRouter } = require("./routes/user.route");
 require('dotenv').config();
 
 
@@ -17,19 +18,23 @@ app.get("/", (req, res)=>{
     res.send("Welcome to attryb backend..!");
 });
 
+//user route
+app.use("/api/user", userRouter);
 
 //user authentication
-app.use(authenticate)
+app.use(authenticate);
 
 //car route
 app.use("/api", carRouter);
 
-app.listen(process.env.port, async()=>{
+const PORT = process.env.port || 8080
+
+app.listen(PORT , async()=>{
     try{
         await connection;
-        console.log("connected with DB")
+        console.log("connected with attryb DB")
     }catch(error){
         console.log(error);
     }
-    console.log(`Server is running at port ${process.env.port}`);
+    console.log(`Server is running at port ${PORT}`);
 })
